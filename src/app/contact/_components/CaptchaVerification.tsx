@@ -103,7 +103,7 @@ export default function CaptchaVerification({ onVerify }: CaptchaVerificationPro
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
           placeholder="Enter captcha (case sensitive)"
-          className="w-full p-2 border border-gray-300 rounded"
+          className="w-full p-2 border border-gray-300 rounded text-black"
         />
         {error && <p className="text-red-500 text-sm">{error}</p>}
         <button
