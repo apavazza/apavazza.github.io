@@ -25,14 +25,14 @@
       "description": "A blogging service",
       "url": "https://github.com/apavazza/HCI",
       "icon": "NotebookPen",
-      "tags": ["Next.JS", "React"]
+      "tags": ["Next.js", "React"]
     },
     {
       "name": "Personal Website",
       "description": "My personal website",
       "url": "https://github.com/apavazza/apavazza.github.io",
       "icon": "User",
-      "tags": ["Next.JS", "React"]
+      "tags": ["Next.js", "React"]
     },
     {
       "name": "Employee Manager",
