@@ -1,0 +1,51 @@
+[
+    {
+      "name": "Password Manager",
+      "description": "A command line password manager",
+      "url": "https://github.com/apavazza/PasswordManager",
+      "icon": "Key",
+      "tags": ["Cryptography", "C++", "CLI"]
+    },
+    {
+      "name": "Linux Distros",
+      "description": "Popularity analysis of Linux distributions",
+      "url": "https://github.com/apavazza/linux-distros",
+      "icon": "BarChart",
+      "tags": ["Data Science", "Python"]
+    },
+    {
+      "name": "Tower Defense",
+      "description": "A tower defense game",
+      "url": "https://github.com/apavazza/tower_defense",
+      "icon": "Shield",
+      "tags": ["Stencyl", "Game"]
+    },
+    {
+      "name": "WriteWarp",
+      "description": "A blogging service",
+      "url": "https://github.com/apavazza/HCI",
+      "icon": "NotebookPen",
+      "tags": ["Next.JS", "React"]
+    },
+    {
+      "name": "Personal Website",
+      "description": "My personal website",
+      "url": "https://github.com/apavazza/apavazza.github.io",
+      "icon": "User",
+      "tags": ["Next.JS", "React"]
+    },
+    {
+      "name": "Employee Manager",
+      "description": "An electron application for managing employees",
+      "url": "https://github.com/apavazza/employee-manager",
+      "icon": "UserCircle2",
+      "tags": ["Electron"]
+    },
+    {
+      "name": "eCommerce",
+      "description": "An eCommerce webapp",
+      "url": "https://github.com/apavazza/ecommerce",
+      "icon": "ShoppingBasket",
+      "tags": ["docker"]
+    }
+  ]  
