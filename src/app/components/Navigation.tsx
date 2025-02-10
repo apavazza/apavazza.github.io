@@ -103,4 +103,3 @@ function MobileMenu({ closeMenu, currentPath }: { closeMenu: () => void; current
     </div>
   )
 }
-

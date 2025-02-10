@@ -14,7 +14,7 @@ export default function CaptchaVerification({ onVerify }: CaptchaVerificationPro
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   const generateCaptcha = () => {
-    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+    const characters = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz0123456789"
     let result = ""
     for (let i = 0; i < 6; i++) {
       result += characters.charAt(Math.floor(Math.random() * characters.length))
@@ -86,15 +86,24 @@ export default function CaptchaVerification({ onVerify }: CaptchaVerificationPro
 
   return (
     <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">
-      <h2 className="text-2xl font-bold text-brand-primary mb-4 text-center">Verify to View Contact Information</h2>
+      <h2 className="text-2xl font-bold text-brand-primary mb-6 text-center leading-tight">
+        Verify to View
+        <br />
+        Contact Information
+      </h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="flex justify-center">
-          <canvas ref={canvasRef} width={200} height={60} className="border border-gray-300 rounded" />
+          <canvas
+            ref={canvasRef}
+            width={200}
+            height={60}
+            className="border-2 border-brand-primary rounded shadow-inner bg-gray-50"
+          />
         </div>
         <button
           type="button"
           onClick={refreshCaptcha}
-          className="w-full bg-gray-200 text-gray-700 py-2 px-4 rounded hover:bg-gray-300 transition-colors"
+          className="w-full bg-gray-100 text-gray-700 py-2 px-4 rounded hover:bg-gray-200 transition-colors border border-gray-300"
         >
           Refresh Captcha
         </button>
@@ -103,12 +112,12 @@ export default function CaptchaVerification({ onVerify }: CaptchaVerificationPro
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
           placeholder="Enter captcha (case sensitive)"
-          className="w-full p-2 border border-gray-300 rounded text-black"
+          className="w-full p-2 border-2 border-gray-300 rounded text-black focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
         />
         {error && <p className="text-red-500 text-sm">{error}</p>}
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors"
+          className="w-full bg-brand-primary text-white py-2 px-4 rounded hover:bg-brand-secondary active:bg-brand-tertiary transition-colors font-semibold"
         >
           Verify
         </button>
@@ -116,4 +125,3 @@ export default function CaptchaVerification({ onVerify }: CaptchaVerificationPro
     </div>
   )
 }
-
