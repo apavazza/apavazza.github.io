@@ -21,7 +21,7 @@ export default function Navigation() {
     <>
       <nav className="bg-blue-950 text-white p-4 sticky top-0 z-20">
         <div className="container mx-auto flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold">
+          <Link href="/" className="text-2xl font-bold" onClick={closeMenu}>
             Amadeo Pavazza
           </Link>
           <div className="hidden md:flex space-x-4 items-center">
@@ -32,11 +32,13 @@ export default function Navigation() {
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
-        {isMenuOpen && (
-          <div className="md:hidden">
-            <MobileMenu closeMenu={closeMenu} currentPath={pathname} />
-          </div>
-        )}
+        <div
+          className={`md:hidden transition-all duration-200 ease-in-out ${
+            isMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+          }`}
+        >
+          <MobileMenu closeMenu={closeMenu} currentPath={pathname} />
+        </div>
       </nav>
       {isMenuOpen && <div className="fixed inset-0 bg-black bg-opacity-50 z-10" onClick={closeMenu}></div>}
     </>
@@ -95,7 +97,7 @@ function GitHubLink() {
 
 function MobileMenu({ closeMenu, currentPath }: { closeMenu: () => void; currentPath: string }) {
   return (
-    <div className="bg-blue-900 mt-2 p-4 rounded-md absolute top-full left-0 right-0 text-center">
+    <div className="bg-blue-950 p-4 rounded-b-md absolute top-full left-0 right-0 text-center">
       <div className="flex flex-col space-y-4">
         <NavLinks closeMenu={closeMenu} currentPath={currentPath} />
         <GitHubLink />
