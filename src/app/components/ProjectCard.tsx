@@ -20,7 +20,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <Link href={project.url} target="_blank" rel="noopener noreferrer" className="block">
-      <div className="bg-white border shadow-md rounded-lg transition duration-300 hover:shadow-lg p-6 h-full flex flex-col justify-between">
+      <div className="bg-gray-50 border shadow-md rounded-lg transition duration-300 hover:shadow-lg p-6 h-full flex flex-col justify-between">
         <div className="flex flex-col items-center">
           <div className="text-blue-950 mb-4">
             <Suspense fallback={<div>Loading...</div>}>
