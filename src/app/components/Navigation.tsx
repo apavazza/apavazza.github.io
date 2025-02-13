@@ -5,10 +5,13 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Github, Menu, X } from "lucide-react"
 
+// Main Navigation component
+// Manages the state for mobile menu and renders appropriate navigation elements
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const pathname = usePathname()
 
+  // Close mobile menu when route changes
   useEffect(() => {
     setIsMenuOpen(false)
   }, [])
@@ -17,8 +20,13 @@ export default function Navigation() {
 
   const closeMenu = () => setIsMenuOpen(false)
 
+  // Render navigation bar and mobile menu
   return (
     <>
+      {/* Overlay for mobile menu (displayed when menu is open) */}
+      {isMenuOpen && <div className="fixed inset-0 bg-black bg-opacity-50 z-10" onClick={closeMenu}></div>}
+
+      {/* Main navigation bar */}
       <nav className="bg-blue-950 text-white p-4 sticky top-0 z-20">
         <div className="container mx-auto flex justify-between items-center">
           <Link href="/" className="text-2xl font-bold" onClick={closeMenu}>
@@ -28,23 +36,28 @@ export default function Navigation() {
             <NavLinks currentPath={pathname} />
             <GitHubLink />
           </div>
-          <button className="md:hidden p-2 rounded-md hover:bg-blue-800 transition-colors" onClick={toggleMenu}>
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+
+          {/* Mobile menu toggle button */}
+          <div className="md:hidden flex items-center space-x-2">
+            <button className="p-2 rounded-md hover:bg-blue-800 transition-colors" onClick={toggleMenu}>
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
-        <div
-          className={`md:hidden transition-all duration-200 ease-in-out ${
-            isMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"
-          }`}
-        >
-          <MobileMenu closeMenu={closeMenu} currentPath={pathname} />
-        </div>
+
+        {/* Mobile menu (conditionally rendered) */}
+        {isMenuOpen && (
+          <div className="md:hidden transition-all duration-200 ease-in-out max-h-screen opacity-100">
+            <MobileMenu closeMenu={closeMenu} currentPath={pathname} />
+          </div>
+        )}
       </nav>
-      {isMenuOpen && <div className="fixed inset-0 bg-black bg-opacity-50 z-10" onClick={closeMenu}></div>}
     </>
   )
 }
 
+// Navigation links component
+// Renders different links based on current path
 function NavLinks({ closeMenu, currentPath }: { closeMenu?: () => void; currentPath: string }) {
   return (
     <>
@@ -61,12 +74,19 @@ function NavLinks({ closeMenu, currentPath }: { closeMenu?: () => void; currentP
   )
 }
 
+// Individual navigation link component
+// Applies active styles based on current path
 function NavLink({
   href,
   children,
   currentPath,
   onClick,
-}: { href: string; children: React.ReactNode; currentPath: string; onClick?: () => void }) {
+}: {
+  href: string
+  children: React.ReactNode
+  currentPath: string
+  onClick?: () => void
+}) {
   const isActive = currentPath === href
   return (
     <Link
@@ -81,6 +101,8 @@ function NavLink({
   )
 }
 
+// GitHub link component
+// Renders a button linking to the GitHub profile
 function GitHubLink() {
   return (
     <Link
@@ -95,9 +117,11 @@ function GitHubLink() {
   )
 }
 
+// Mobile menu component
+// Renders full-width menu for mobile view
 function MobileMenu({ closeMenu, currentPath }: { closeMenu: () => void; currentPath: string }) {
   return (
-    <div className="bg-blue-950 p-4 rounded-b-md absolute top-full left-0 right-0 text-center">
+    <div className="bg-blue-950 p-4 rounded-b-md absolute top-full left-0 right-0 text-center z-20">
       <div className="flex flex-col space-y-4">
         <NavLinks closeMenu={closeMenu} currentPath={currentPath} />
         <GitHubLink />
