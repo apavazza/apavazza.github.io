@@ -1,9 +1,4 @@
-import { Metadata } from 'next';
 import Projects from './components/Projects';
-
-export const metadata: Metadata = {
-  title: "Home | Amadeo Pavazza",
-}
 
 export default function HomePage() {
   return (
