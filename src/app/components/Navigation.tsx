@@ -5,6 +5,27 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Github, Menu, X } from "lucide-react"
 
+const navigationData = {
+  "mainLinks": [
+    {
+      "name": "Home",
+      "href": "/"
+    },
+    {
+      "name": "About",
+      "href": "/about"
+    },
+    {
+      "name": "Contact",
+      "href": "/contact"
+    }
+  ],
+  "githubLink": {
+    "name": "My GitHub",
+    "href": "https://github.com/apavazza"
+  }
+}
+
 // Main Navigation component
 // Manages the state for mobile menu and renders appropriate navigation elements
 export default function Navigation() {
@@ -61,15 +82,11 @@ export default function Navigation() {
 function NavLinks({ closeMenu, currentPath }: { closeMenu?: () => void; currentPath: string }) {
   return (
     <>
-      <NavLink href="/" currentPath={currentPath} onClick={closeMenu}>
-        Home
-      </NavLink>
-      <NavLink href="/about" currentPath={currentPath} onClick={closeMenu}>
-        About
-      </NavLink>
-      <NavLink href="/contact" currentPath={currentPath} onClick={closeMenu}>
-        Contact
-      </NavLink>
+      {navigationData.mainLinks.map((link) => (
+        <NavLink key={link.href} href={link.href} currentPath={currentPath} onClick={closeMenu}>
+          {link.name}
+        </NavLink>
+      ))}
     </>
   )
 }
@@ -104,15 +121,16 @@ function NavLink({
 // GitHub link component
 // Renders a button linking to the GitHub profile
 function GitHubLink() {
+  const { name, href } = navigationData.githubLink
   return (
     <Link
-      href="https://github.com/apavazza"
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
       className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors flex justify-center items-center"
     >
       <Github className="mr-2" size={20} />
-      My GitHub
+      {name}
     </Link>
   )
 }

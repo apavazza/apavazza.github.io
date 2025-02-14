@@ -15,7 +15,7 @@ export default function EducationCard() {
 
   useEffect(() => {
     async function fetchEducationItems() {
-      const response = await fetch('/education.json')
+      const response = await fetch('/data/education.json')
       const data = await response.json()
       setEducationItems(data)
     }
