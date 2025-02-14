@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
-export default function GlobalError({ error }: { error: Error, reset: () => void })  {
+export default function Error({ error }: { error: Error, reset: () => void })  {
   return (
     <div className="flex justify-center mt-6 bg-gray-100">
       <div className="text-center">

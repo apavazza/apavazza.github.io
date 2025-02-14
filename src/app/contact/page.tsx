@@ -1,35 +1,14 @@
-"use client"
+import { Metadata } from "next"
+import Contact from "./_components/Contact"
 
-import { useState, useEffect } from "react"
-import ContactCard from "./_components/ContactCard"
-import CaptchaVerification from "./_components/CaptchaVerification"
+export const metadata: Metadata = {
+  title: "Contact"
+}
 
-export default function Contact() {
-  const [verified, setVerified] = useState(false)
-
-  useEffect(() => {
-    const checkVerification = () => {
-      const isVerified = sessionStorage.getItem("captchaVerified") === "true"
-      setVerified(isVerified)
-    }
-
-    window.addEventListener("storage", checkVerification)
-    checkVerification()
-
-    return () => {
-      window.removeEventListener("storage", checkVerification)
-    }
-  }, [])
-
-  const handleVerify = () => {
-    setVerified(true)
-    sessionStorage.setItem("captchaVerified", "true")
-    window.dispatchEvent(new Event("storage"))
-  }
-
+export default function ContactPage() {
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-200px)]">
-      {verified ? <ContactCard /> : <CaptchaVerification onVerify={handleVerify} />}
+        <Contact />
     </div>
   )
 }

@@ -11,37 +11,35 @@ interface EducationItem {
 }
 
 export default function EducationCard() {
-    const [educationItems, setEducationItems] = useState<EducationItem[]>([])
-  
-    useEffect(() => {
-      async function fetchEducationItems() {
-        const response = await fetch('/education.json')
-        const data = await response.json()
-        setEducationItems(data)
-      }
-  
-      fetchEducationItems()
-    }, [])
-  
-    return (
-      <div className="bg-white shadow-md rounded-lg p-6 max-w-3xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6 text-brand-primary">Education</h1>
-        <div className="space-y-8">
-          {educationItems.map((ed, index) => (
-            <EducationItemComponent
-              key={index}
-              year={ed.year}
-              degree={ed.degree}
-              institution={ed.institution}
-              faculty={ed.faculty}
-            />
-          ))}
-        </div>
-      </div>
-    )
-  }
-  
+  const [educationItems, setEducationItems] = useState<EducationItem[]>([])
 
+  useEffect(() => {
+    async function fetchEducationItems() {
+      const response = await fetch('/education.json')
+      const data = await response.json()
+      setEducationItems(data)
+    }
+
+    fetchEducationItems()
+  }, [])
+  
+  return (
+    <div className="bg-white shadow-md rounded-lg p-6 max-w-3xl mx-auto">
+      <h1 className="text-3xl font-bold mb-6 text-brand-primary">Education</h1>
+      <div className="space-y-8">
+        {educationItems.map((ed, index) => (
+          <EducationItemComponent
+            key={index}
+            year={ed.year}
+            degree={ed.degree}
+            institution={ed.institution}
+            faculty={ed.faculty}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
 
 function EducationItemComponent({
     year,

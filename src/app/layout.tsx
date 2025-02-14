@@ -3,12 +3,15 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import Navigation from "./components/Navigation"
 import Footer from "./components/Footer"
-import type React from "react" // Added import for React
+import type React from "react"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Amadeo Pavazza",
+  title: {
+    default: "Amadeo Pavazza",
+    template: "%s | Amadeo Pavazza",
+  },
   description: "Portfolio website of Amadeo Pavazza",
 }
 
