@@ -19,7 +19,6 @@ export default function EducationCard() {
       const data = await response.json()
       setEducationItems(data)
     }
-
     fetchEducationItems()
   }, [])
   

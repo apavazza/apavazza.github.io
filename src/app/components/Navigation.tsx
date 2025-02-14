@@ -5,32 +5,25 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Github, Menu, X } from "lucide-react"
 
-const navigationData = {
-  "mainLinks": [
-    {
-      "name": "Home",
-      "href": "/"
-    },
-    {
-      "name": "About",
-      "href": "/about"
-    },
-    {
-      "name": "Contact",
-      "href": "/contact"
-    }
-  ],
-  "githubLink": {
-    "name": "My GitHub",
-    "href": "https://github.com/apavazza"
-  }
+interface NavigationData {
+  mainLinks: Array<{ label: string; href: string }>
+  githubLink: { label: string; href: string }
 }
 
 // Main Navigation component
 // Manages the state for mobile menu and renders appropriate navigation elements
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [navigationData, setNavigationData] = useState<NavigationData | null>(null)
   const pathname = usePathname()
+
+  // Fetch navigation data
+  useEffect(() => {
+    fetch("/data/navigation.json")
+      .then((response) => response.json())
+      .then((data) => setNavigationData(data))
+      .catch((error) => console.error("Error fetching navigation data:", error))
+  }, [])
 
   // Close mobile menu when route changes
   useEffect(() => {
@@ -54,8 +47,12 @@ export default function Navigation() {
             Amadeo Pavazza
           </Link>
           <div className="hidden md:flex space-x-4 items-center">
-            <NavLinks currentPath={pathname} />
-            <GitHubLink />
+            {navigationData && (
+              <>
+                <NavLinks currentPath={pathname} navigationData={navigationData} />
+                <GitHubLink navigationData={navigationData} />
+              </>
+            )}
           </div>
 
           {/* Mobile menu toggle button */}
@@ -67,9 +64,9 @@ export default function Navigation() {
         </div>
 
         {/* Mobile menu (conditionally rendered) */}
-        {isMenuOpen && (
+        {isMenuOpen && navigationData && (
           <div className="md:hidden transition-all duration-200 ease-in-out max-h-screen opacity-100">
-            <MobileMenu closeMenu={closeMenu} currentPath={pathname} />
+            <MobileMenu closeMenu={closeMenu} currentPath={pathname} navigationData={navigationData} />
           </div>
         )}
       </nav>
@@ -79,12 +76,16 @@ export default function Navigation() {
 
 // Navigation links component
 // Renders different links based on current path
-function NavLinks({ closeMenu, currentPath }: { closeMenu?: () => void; currentPath: string }) {
+function NavLinks({
+  closeMenu,
+  currentPath,
+  navigationData,
+}: { closeMenu?: () => void; currentPath: string; navigationData: NavigationData }) {
   return (
     <>
       {navigationData.mainLinks.map((link) => (
         <NavLink key={link.href} href={link.href} currentPath={currentPath} onClick={closeMenu}>
-          {link.name}
+          {link.label}
         </NavLink>
       ))}
     </>
@@ -120,8 +121,8 @@ function NavLink({
 
 // GitHub link component
 // Renders a button linking to the GitHub profile
-function GitHubLink() {
-  const { name, href } = navigationData.githubLink
+function GitHubLink({ navigationData }: { navigationData: NavigationData }) {
+  const { label, href } = navigationData.githubLink
   return (
     <Link
       href={href}
@@ -130,19 +131,23 @@ function GitHubLink() {
       className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors flex justify-center items-center"
     >
       <Github className="mr-2" size={20} />
-      {name}
+      {label}
     </Link>
   )
 }
 
 // Mobile menu component
 // Renders full-width menu for mobile view
-function MobileMenu({ closeMenu, currentPath }: { closeMenu: () => void; currentPath: string }) {
+function MobileMenu({
+  closeMenu,
+  currentPath,
+  navigationData,
+}: { closeMenu: () => void; currentPath: string; navigationData: NavigationData }) {
   return (
     <div className="bg-blue-950 p-4 rounded-b-md absolute top-full left-0 right-0 text-center z-20">
       <div className="flex flex-col space-y-4">
-        <NavLinks closeMenu={closeMenu} currentPath={currentPath} />
-        <GitHubLink />
+        <NavLinks closeMenu={closeMenu} currentPath={currentPath} navigationData={navigationData} />
+        <GitHubLink navigationData={navigationData} />
       </div>
     </div>
   )
