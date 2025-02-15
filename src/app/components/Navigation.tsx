@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Github, Menu, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 
 interface NavigationData {
   mainLinks: Array<{ label: string; href: string }>
@@ -130,7 +130,6 @@ function GitHubLink({ navigationData }: { navigationData: NavigationData }) {
       rel="noopener noreferrer"
       className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors flex justify-center items-center"
     >
-      <Github className="mr-2" size={20} />
       {label}
     </Link>
   )
