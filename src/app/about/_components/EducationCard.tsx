@@ -24,7 +24,7 @@ export default function EducationCard() {
   
   return (
     <div className="bg-white shadow-md rounded-lg p-6 max-w-3xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6 text-brand-primary">Education</h1>
+      <h2 className="text-3xl font-bold mb-6 text-brand-primary">Education</h2>
       <div className="space-y-8">
         {educationItems.map((ed, index) => (
           <EducationItemComponent

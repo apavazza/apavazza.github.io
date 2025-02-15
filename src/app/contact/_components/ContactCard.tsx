@@ -9,7 +9,7 @@ export default function ContactCard() {
   return(
     <div className="bg-white shadow-lg rounded-lg overflow-hidden w-full max-w-md">
       <div className="p-6">
-        <h1 className="text-3xl font-bold text-gray-900">Amadeo Pavazza</h1>
+        <h2 className="text-3xl font-bold text-gray-900">Amadeo Pavazza</h2>
         <p className="text-sm mt-2 text-gray-700">B. Sc. Comp.</p>
       </div>
       <div className="p-6">

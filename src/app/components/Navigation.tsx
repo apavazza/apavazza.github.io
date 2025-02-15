@@ -44,7 +44,7 @@ export default function Navigation() {
       <nav className="bg-blue-950 text-white p-4 sticky top-0 z-20">
         <div className="container mx-auto flex justify-between items-center">
           <Link href="/" className="text-2xl font-bold" onClick={closeMenu}>
-            Amadeo Pavazza
+            <h1>Amadeo Pavazza</h1>
           </Link>
           <div className="hidden md:flex space-x-4 items-center">
             {navigationData && (
@@ -128,7 +128,7 @@ function GitHubLink({ navigationData }: { navigationData: NavigationData }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded transition-colors"
+      className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 w-min rounded transition-colors"
     >
       {label}
     </Link>
