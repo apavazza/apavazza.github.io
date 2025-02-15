@@ -1,6 +1,6 @@
 "use client"
 
-import ProjectCard from "@/app/components/ProjectCard"
+import ProjectCard from "./ProjectCard"
 import { useEffect, useState } from "react"
 
 interface Project {
@@ -31,5 +31,6 @@ export default function Projects(){
           <ProjectCard key={index} project={project} />
         ))}
       </div>
-    </>)
+    </>
+  )
 }
