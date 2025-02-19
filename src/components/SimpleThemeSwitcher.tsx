@@ -6,7 +6,7 @@ import { Sun, Moon } from "lucide-react"
 
 export default function SimpleThemeSwitcher() {
   const [mounted, setMounted] = useState(false)
-  const { theme, setTheme } = useTheme()
+  const { theme, setTheme, resolvedTheme } = useTheme()
 
   useEffect(() => {
     setMounted(true)
@@ -18,11 +18,11 @@ export default function SimpleThemeSwitcher() {
 
   return (
     <button
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
       className="fixed right-2 bottom-2 p-2 border border-gray-300 shadow-md rounded-full bg-gray-200 text-gray-800"
       aria-label="Toggle dark mode"
     >
-      {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+      {resolvedTheme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
     </button>
   )
 }
