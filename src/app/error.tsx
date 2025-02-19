@@ -22,7 +22,7 @@ export default function Error({ error }: { error: Error, reset: () => void })  {
         </p>
         <Link
           href="/"
-          className="bg-brand-primary hover:bg-brand-secondary active:bg-brand-tertiary text-white font-bold py-2 px-4 rounded transition duration-300"
+          className="bg-brand-primary dark:bg-gray-600 hover:bg-brand-secondary dark:hover:bg-gray-500 active:bg-brand-tertiary dark:active:bg-gray-400 text-white dark:text-gray-100 font-bold py-2 px-4 rounded transition duration-300"
         >
           Go Home
         </Link>

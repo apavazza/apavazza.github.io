@@ -86,7 +86,7 @@ export default function CaptchaVerification({ onVerify }: CaptchaVerificationPro
 
   return (
     <div className="bg-white dark:bg-gray-300 shadow-lg rounded-lg p-6 w-full max-w-md">
-      <h2 className="text-2xl font-bold text-brand-primary mb-6 text-center leading-tight">
+      <h2 className="text-2xl font-bold text-brand-primary dark:text-gray-800 mb-6 text-center leading-tight">
         Verify to View
         <br />
         Contact Information
@@ -97,7 +97,7 @@ export default function CaptchaVerification({ onVerify }: CaptchaVerificationPro
             ref={canvasRef}
             width={200}
             height={60}
-            className="border-2 border-brand-primary rounded shadow-inner bg-gray-50"
+            className="border-2 border-brand-primary dark:border-gray-800 rounded shadow-inner bg-gray-50"
           />
         </div>
         <button
@@ -117,7 +117,7 @@ export default function CaptchaVerification({ onVerify }: CaptchaVerificationPro
         {error && <p className="text-red-500 text-sm">{error}</p>}
         <button
           type="submit"
-          className="w-full bg-brand-primary text-white py-2 px-4 rounded hover:bg-brand-secondary active:bg-brand-tertiary transition-colors font-semibold"
+          className="w-full bg-brand-primary dark:bg-gray-800 text-white py-2 px-4 rounded hover:bg-brand-secondary dark:hover:bg-gray-700 active:bg-brand-tertiary dark:active:bg-gray-600 transition-colors font-semibold"
         >
           Verify
         </button>

@@ -43,7 +43,7 @@ export default function Navigation() {
       {isMenuOpen && <div className="fixed inset-0 bg-black bg-opacity-50 z-10" onClick={closeMenu}></div>}
 
       {/* Main navigation bar */}
-      <nav className="bg-blue-950 text-white p-4 sticky top-0 z-20">
+      <nav className="bg-blue-950 dark:bg-black text-gray-100 p-4 sticky top-0 z-20">
         <div className="container mx-auto flex justify-between items-center">
           <Link href="/" className="text-2xl font-bold" onClick={closeMenu}>
             <h1>Amadeo Pavazza</h1>
@@ -60,7 +60,7 @@ export default function Navigation() {
 
           {/* Mobile menu toggle button */}
           <div className="md:hidden flex items-center space-x-2">
-            <button className="p-2 rounded-md hover:bg-blue-800 transition-colors" onClick={toggleMenu}>
+            <button className="p-2 rounded-md hover:bg-blue-800 dark:hover:bg-gray-800 transition-colors" onClick={toggleMenu}>
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -113,7 +113,7 @@ function NavLink({
     <Link
       href={href}
       className={`px-4 py-2 rounded-md transition-colors ${
-        isActive ? "bg-blue-700 text-white" : "text-white hover:bg-blue-800"
+        isActive ? "bg-blue-700 dark:bg-gray-200 text-white dark:text-gray-800" : "text-white dark:hover:text-gray-900 dark:hover:bg-gray-300"
       }`}
       onClick={onClick}
     >
@@ -131,7 +131,7 @@ function GitHubLink({ navigationData }: { navigationData: NavigationData }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 w-min rounded transition-colors"
+      className="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-bold py-2 px-4 w-min rounded transition-colors"
     >
       {label}
     </Link>
@@ -146,10 +146,10 @@ function MobileMenu({
   navigationData,
 }: { closeMenu: () => void; currentPath: string; navigationData: NavigationData }) {
   return (
-    <div className="bg-blue-950 p-4 rounded-b-md absolute top-full left-0 right-0 z-20">
+    <div className="bg-blue-950 dark:bg-gray-950 p-4 rounded-b-md absolute top-full left-0 right-0 z-20">
       <div className="flex flex-col space-y-4">
         <NavLinks closeMenu={closeMenu} currentPath={currentPath} navigationData={navigationData} />
-        <div className="border-t border-blue-400/30 my-2"></div>
+        <div className="border-t border-blue-400/30 dark:border-gray-700 my-2"></div>
         <div className="flex justify-between items-center">
           <GitHubLink navigationData={navigationData} />
           <ToggleThemeSwitcher />
