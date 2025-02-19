@@ -85,7 +85,7 @@ export default function CaptchaVerification({ onVerify }: CaptchaVerificationPro
   }
 
   return (
-    <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">
+    <div className="bg-white dark:bg-gray-300 shadow-lg rounded-lg p-6 w-full max-w-md">
       <h2 className="text-2xl font-bold text-brand-primary mb-6 text-center leading-tight">
         Verify to View
         <br />
@@ -103,7 +103,7 @@ export default function CaptchaVerification({ onVerify }: CaptchaVerificationPro
         <button
           type="button"
           onClick={refreshCaptcha}
-          className="w-full bg-gray-100 text-gray-700 py-2 px-4 rounded hover:bg-gray-200 transition-colors border border-gray-300"
+          className="w-full bg-gray-200 text-gray-700 py-2 px-4 rounded hover:bg-gray-200 transition-colors border border-gray-300"
         >
           Refresh Captcha
         </button>
@@ -112,7 +112,7 @@ export default function CaptchaVerification({ onVerify }: CaptchaVerificationPro
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
           placeholder="Enter captcha (case sensitive)"
-          className="w-full p-2 border-2 border-gray-300 rounded text-black focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
+          className="w-full p-2 border-2 border-gray-300 dark:border-gray-200 rounded text-gray-800 placeholder:text-gray-500 bg-gray-100 dark:bg-gray-100 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary"
         />
         {error && <p className="text-red-500 text-sm">{error}</p>}
         <button

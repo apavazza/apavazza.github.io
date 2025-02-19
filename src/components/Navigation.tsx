@@ -4,6 +4,8 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
+import SimpleThemeSwitcher from "@/components/SimpleThemeSwitcher"
+import ToggleThemeSwitcher from "@/components/ToggleThemeSwitcher"
 
 interface NavigationData {
   mainLinks: Array<{ label: string; href: string }>
@@ -28,7 +30,7 @@ export default function Navigation() {
   // Close mobile menu when route changes
   useEffect(() => {
     setIsMenuOpen(false)
-  }, [])
+  }, [pathname])
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
@@ -51,6 +53,7 @@ export default function Navigation() {
               <>
                 <NavLinks currentPath={pathname} navigationData={navigationData} />
                 <GitHubLink navigationData={navigationData} />
+                <SimpleThemeSwitcher />
               </>
             )}
           </div>
@@ -147,7 +150,10 @@ function MobileMenu({
       <div className="flex flex-col space-y-4">
         <NavLinks closeMenu={closeMenu} currentPath={currentPath} navigationData={navigationData} />
         <div className="border-t border-blue-400/30 my-2"></div>
-        <GitHubLink navigationData={navigationData} />
+        <div className="flex justify-between items-center">
+          <GitHubLink navigationData={navigationData} />
+          <ToggleThemeSwitcher />
+        </div>
       </div>
     </div>
   )
