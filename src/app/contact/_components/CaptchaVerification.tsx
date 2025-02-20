@@ -85,8 +85,8 @@ export default function CaptchaVerification({ onVerify }: CaptchaVerificationPro
   }
 
   return (
-    <div className="bg-white dark:bg-gray-300 shadow-lg rounded-lg p-6 w-full max-w-md">
-      <h2 className="text-2xl font-bold text-brand-primary dark:text-gray-800 mb-6 text-center leading-tight">
+    <div className="bg-white dark:bg-[#121212] shadow-lg rounded-lg p-6 w-full max-w-md">
+      <h2 className="text-2xl font-bold text-brand-primary dark:text-gray-200 mb-6 text-center leading-tight">
         Verify to View
         <br />
         Contact Information
@@ -103,7 +103,8 @@ export default function CaptchaVerification({ onVerify }: CaptchaVerificationPro
         <button
           type="button"
           onClick={refreshCaptcha}
-          className="w-full bg-gray-200 text-gray-700 py-2 px-4 rounded hover:bg-gray-200 transition-colors border border-gray-300"
+          className="w-full bg-gray-200 text-gray-700 py-2 px-4 rounded hover:bg-gray-200 transition-colors border border-gray-300
+            dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500"
         >
           Refresh Captcha
         </button>
@@ -117,7 +118,8 @@ export default function CaptchaVerification({ onVerify }: CaptchaVerificationPro
         {error && <p className="text-red-500 text-sm">{error}</p>}
         <button
           type="submit"
-          className="w-full bg-brand-primary dark:bg-gray-800 text-white py-2 px-4 rounded hover:bg-brand-secondary dark:hover:bg-gray-700 active:bg-brand-tertiary dark:active:bg-gray-600 transition-colors font-semibold"
+          className="w-full bg-brand-primary text-white dark:text-gray-200 py-2 px-4 rounded hover:bg-brand-secondary active:bg-brand-tertiary transition-colors font-semibold
+            dark:bg-gray-700 dark:hover:bg-gray-600 dark:active:bg-gray-500"
         >
           Verify
         </button>

@@ -23,8 +23,8 @@ export default function EducationCard() {
   }, [])
   
   return (
-    <div className="bg-white dark:bg-gray-300 shadow-lg rounded-lg p-6 max-w-3xl mx-auto">
-      <h2 className="text-3xl font-bold mb-6 text-brand-primary dark:text-gray-800">Education</h2>
+    <div className="bg-white dark:bg-[#121212] shadow-lg rounded-lg p-6 max-w-3xl mx-auto">
+      <h2 className="text-3xl font-bold mb-6 text-brand-primary dark:text-gray-200">Education</h2>
       <div className="space-y-8">
         {educationItems.map((ed, index) => (
           <EducationItemComponent
@@ -55,12 +55,12 @@ function EducationItemComponent({
         </div>
         <div>
           <div className="flex items-center mb-2">
-            <Calendar size={16} className="text-brand-primary dark:text-gray-800 mr-2" />
-            <span className="text-sm text-gray-600">{year}</span>
+            <Calendar size={16} className="text-brand-primary dark:text-gray-300 mr-2" />
+            <span className="text-sm text-gray-600 dark:text-gray-300">{year}</span>
           </div>
-          <h3 className="text-xl font-semibold text-blue-900 dark:text-gray-900">{degree}</h3>
-          <p className="text-gray-700">{institution}</p>
-          {faculty && <p className="text-gray-600 text-sm">{faculty}</p>}
+          <h3 className="text-xl font-semibold text-blue-900 dark:text-gray-200">{degree}</h3>
+          <p className="text-gray-700 dark:text-gray-300">{institution}</p>
+          {faculty && <p className="text-gray-600 dark:text-gray-400 text-sm">{faculty}</p>}
         </div>
       </div>
     )

@@ -7,21 +7,21 @@ export default function ContactCard() {
   }
 
   return(
-    <div className="bg-white dark:bg-gray-300 shadow-lg rounded-lg overflow-hidden w-full max-w-md">
+    <div className="bg-white dark:bg-[#121212] shadow-lg rounded-lg overflow-hidden w-full max-w-md">
       <div className="p-6">
-        <h2 className="text-3xl font-bold text-gray-900">Amadeo Pavazza</h2>
-        <p className="text-sm mt-2 text-gray-700">B. Sc. Comp.</p>
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-200">Amadeo Pavazza</h2>
+        <p className="text-sm mt-2 text-gray-700 dark:text-gray-300">B. Sc. Comp.</p>
       </div>
       <div className="p-6">
         <div className="flex items-center mb-4">
-          <Mail className="mr-4 text-gray-700" size={24} />
-          <a href={`mailto:${getEmail()}`} className="text-gray-700 hover:text-brand-primary">
+          <Mail className="mr-4 text-gray-700 dark:text-gray-300" size={24} />
+          <a href={`mailto:${getEmail()}`} className="text-gray-700 hover:text-brand-primary dark:text-gray-300 dark:hover:text-gray-200">
           {getEmail()}
           </a>
         </div>
         <div className="flex items-center">
-          <MapPin className="mr-4 text-gray-700" size={24} />
-          <p className="text-gray-700">Split, Croatia</p>
+          <MapPin className="mr-4 text-gray-700 dark:text-gray-300" size={24} />
+          <p className="text-gray-700 dark:text-gray-300">Split, Croatia</p>
         </div>
       </div>
     </div>

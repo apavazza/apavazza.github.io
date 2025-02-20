@@ -146,7 +146,7 @@ function MobileMenu({
   navigationData,
 }: { closeMenu: () => void; currentPath: string; navigationData: NavigationData }) {
   return (
-    <div className="bg-blue-950 dark:bg-gray-950 p-4 rounded-b-md absolute top-full left-0 right-0 z-20">
+    <div className="bg-blue-950 dark:bg-black p-4 rounded-b-md absolute top-full left-0 right-0 z-20">
       <div className="flex flex-col space-y-4">
         <NavLinks closeMenu={closeMenu} currentPath={currentPath} navigationData={navigationData} />
         <div className="border-t border-blue-400/30 dark:border-gray-700 my-2"></div>
