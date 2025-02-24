@@ -113,7 +113,7 @@ function NavLink({
     <Link
       href={href}
       className={`px-4 py-2 rounded-md transition-colors ${
-        isActive ? "bg-blue-700 dark:bg-gray-200 text-white dark:text-gray-800" : "text-white dark:hover:text-gray-900 dark:hover:bg-gray-300"
+        isActive ? "bg-blue-700 dark:bg-gray-200 dark:text-gray-800" : "hover:bg-blue-800 dark:hover:text-gray-900 dark:hover:bg-gray-300"
       }`}
       onClick={onClick}
     >
